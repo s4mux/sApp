@@ -1,0 +1,12 @@
+{
+  "posts": [
+    { "id": 1, "title": "json-server", "author": "typicode" }
+  ],
+  "shooters": [
+    {"id": 7, "club": "Super Schützen","firstname": "Raphael","name": "Remy", "year": "1991", "cat": "E", "gender": "male", "chees": false}
+  ],
+  "comments": [
+    { "id": 1, "body": "some comment", "postId": 1 }
+  ],
+  "profile": { "name": "typicode" }
+}
