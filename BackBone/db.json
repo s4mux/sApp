@@ -1,12 +1,80 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
-  ],
   "shooters": [
-    {"id": 7, "club": "Super Schützen","firstname": "Raphael","name": "Remy", "year": "1991", "cat": "E", "gender": "male", "chees": false}
-  ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+    {
+      "id": 1,
+      "club": "Super Schützen",
+      "firstname": "Raphael",
+      "name": "Remy",
+      "year": 1991,
+      "gender":"Male"
+    },
+    {
+      "id": 2,
+      "club": "Super Schützen",
+      "firstname": "Beat",
+      "name": "Waeber",
+      "year": 1978,
+      "gender": "Male"
+    },
+    {
+      "id": 3,
+      "firstname": "Aline",
+      "name": "Remy",
+      "club": "Girls",
+      "gender": "Female"
+    },
+    {
+      "id": 4,
+      "firstname": "Dario",
+      "name": "Gugler",
+      "club": "Musiker"
+    },
+      {
+        "id": 5,
+        "club": "Super Schützen",
+        "firstname": "Tamari",
+        "name": "Waeber"
+      },
+      {
+        "id": 6,
+        "club": "Girls",
+        "firstname": "Nathalie",
+        "name": "Waeber"
+      },
+      {
+        "id": 7,
+        "firstname": "Thomas",
+        "name": "Kolly",
+        "club": "Fischer"
+      },
+      {
+        "id": 8,
+        "firstname": "David",
+        "name": "Kolly",
+        "club": "Fischer"
+      },
+        {
+          "id": 9,
+          "club": "Musiker",
+          "firstname": "Angus",
+          "name": "Young"
+        },
+        {
+          "id": 10,
+          "club": "Rocker",
+          "name": "Slash"
+        },
+        {
+          "id": 11,
+          "firstname": "Tom",
+          "name": "Cruise",
+          "club": "Star"
+        },
+        {
+          "id": 12,
+          "firstname": "Brad",
+          "name": "Pitt",
+          "club": "Star"
+        }
+  ]
 }
