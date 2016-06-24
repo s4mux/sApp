@@ -129,7 +129,7 @@ Handlebars.registerHelper('getGenderText', function(gender) {
     start: function(){
       this.Collections.shooters = new ShooterCollection();
       this.Collections.shooters.fetch({success: function(collection, response, options){
-       sApp.Router.navigate("shooter/" + collection.at(0).attributes.id, {trigger: true});
+       /*sApp.Router.navigate("shooter/" + collection.at(0).attributes.id, {trigger: true});*/
 
       }})
       this.Views.sTableView = new ShooterTableView({
