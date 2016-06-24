@@ -20,3 +20,24 @@
   float: left;
   border-bottom-width: 0;
 }
+
+
+#serachGroup * {
+  border-radius: 0;
+  border: 0;
+  background-color: #fff;
+}
+
+
+/*
+#serachGroup * {
+  border: none;
+    outline:none;
+  background-color: #fff;
+}
+
+#serachGroup:focus{
+
+     border: transparent;
+    outline:none;
+}*/

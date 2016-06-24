@@ -14,7 +14,8 @@
       "firstname": "Beat",
       "name": "Waeber",
       "year": 1978,
-      "gender": "Male"
+      "gender": "Male",
+      "group": "D7"
     },
     {
       "id": 3,
@@ -75,6 +76,29 @@
           "firstname": "Brad",
           "name": "Pitt",
           "club": "Star"
-        }
+        },
+          {
+            "id": 13,
+            "club": "Musiker",
+            "firstname": "Angus",
+            "name": "Young"
+          },
+          {
+            "id": 14,
+            "club": "Rocker",
+            "name": "Slash"
+          },
+          {
+            "id": 15,
+            "firstname": "Tom",
+            "name": "Cruise",
+            "club": "Star"
+          },
+          {
+            "id": 16,
+            "firstname": "Brad",
+            "name": "Pitt",
+            "club": "Star"
+          }
   ]
 }

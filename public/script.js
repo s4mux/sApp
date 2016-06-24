@@ -1,6 +1,6 @@
 Handlebars.registerHelper('getGenderText', function(gender) {
   if( gender==="Male"){
-    return "Mänlich"
+    return "Männlich"
   }
   else if( gender==="Female"){
     return "Weiblich"
@@ -27,8 +27,10 @@ Handlebars.registerHelper('getGenderText', function(gender) {
 
 
   var ShooterItemView = Backbone.View.extend({
-    tagName: 'tr',
-    template: Handlebars.compile('<td>{{this.name}} {{this.firstname}}</td><td>{{this.club}}</td> <td>{{this.group}}</td>'),
+    tagName: 'a',
+    className: "list-group-item",
+    attributes: {'href': '#'},
+    template: Handlebars.compile( $("#shooterTableItemTemplate").html() ),
     initialize: function(){},
     render: function(){
       this.$el.html(this.template(this.model.attributes));
@@ -45,18 +47,18 @@ Handlebars.registerHelper('getGenderText', function(gender) {
   });
 
   var ShooterTableView = Backbone.View.extend({
-    className: "table table-hover",
+    //className: "list-group",
     template: Handlebars.compile( $("#shooterTableTemplate").html() ),
     initialize: function () {
       this.collection.on("change reset add remove", this.render, this);
     },
     events: {
-      "click tbody>tr" : "highlight",
+      "click a" : "highlight",
       "click addShooterButton" : "addSchooterClicked"
     },
     addOneItem: function(model){
       var view = new ShooterItemView({model: model});
-      this.$("tbody").append(view.render().el);
+      this.$el.append(view.render().el);
     },
 
     render: function () {
@@ -66,9 +68,9 @@ Handlebars.registerHelper('getGenderText', function(gender) {
     },
 
     highlight: function(event){
-        this.$el.find("tr").removeClass("info");
+        this.$el.find("a").removeClass("active");
         console.log(event);
-        $(event.currentTarget).addClass("info");
+        $(event.currentTarget).addClass("active");
 
     },
 
@@ -77,9 +79,21 @@ Handlebars.registerHelper('getGenderText', function(gender) {
     }
   });
 
-
-  var ShooterIoView = Backbone.View.extend({
+  var ShooterView = Backbone.View.extend({
     template: Handlebars.compile($("#shooterTemplate").html()),
+
+    render: function(){
+      this.$el.html(this.template(this.model.attributes));
+    },
+
+    initialize: function(){
+      this.model.on("change", this.render, this);
+      this.render();
+    },
+  });
+
+  var ShooterEditView = Backbone.View.extend({
+    template: Handlebars.compile($("#shooterEditTemplate").html()),
 
     render: function(){
       this.$el.html(this.template(this.model.attributes));
@@ -103,7 +117,7 @@ Handlebars.registerHelper('getGenderText', function(gender) {
         this.model.set({'gender': "Female"})
       }
       else{
-        alert("there is a Problem with the ShooterIoView gender handler")
+        alert("there is a Problem with the ShooterEditView gender handler")
       }
     }
 
@@ -136,12 +150,12 @@ Handlebars.registerHelper('getGenderText', function(gender) {
         collection: this.Collections.shooters,
         el: "#shooters-tabe"
       });
-      this.Views.sIoView = new ShooterIoView({
+      this.Views.sIoView = new ShooterView({
         model: new ShooterModel,
         el: "#shooter-io"
       })
       this.Router.app = this;
-      Backbone.history.start({pushState: true});
+      Backbone.history.start(/*{pushState: true}*/);
     }
   }
 
