@@ -26,6 +26,7 @@ HandlebarsR.registerHelper('getGenderText', function(gender) {
 var ioView;
 var sCollection;
 var sTableView;
+var editView;
 
 events.on('show:shooter', function(id){
   var model = sCollection.get(id);
@@ -33,6 +34,21 @@ events.on('show:shooter', function(id){
   ioView.model.clear({silent: true});
   ioView.model.set(model.attributes);
 
+});
+
+events.on('edit:shooter', function(id){
+  if(id === 'new'){
+    editView = new ShooterEditView({
+      model: new ShooterModel(),
+      el: '#shooter-io'
+    });
+  }
+  else{
+    editView = new ShooterEditView({
+      model: sCollection.get(id),
+      el: '#shooter-io'
+    });
+  }
 });
 
 

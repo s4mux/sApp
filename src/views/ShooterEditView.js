@@ -1,6 +1,6 @@
 var $                   = require('jquery'),
     Backbone            = require('backbone'),
-    template            = require("../templates/ShooterTableItem.hbs");
+    template            = require("../templates/ShooterEdit.hbs");
 
 Backbone.$ = $;
 

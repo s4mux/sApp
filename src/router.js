@@ -2,23 +2,19 @@
 
 var $                   = require('jquery');
 var Backbone            = require('backbone');
-var ShooterCollection   = require("./models/ShooterCollection")
-var ShooterModel        = require("./models/ShooterModel");
-var ShooterTableView    = require("./views/ShooterTableView");
 var events              = require("./events");
 Backbone.$ = $;
 
 var Router = Backbone.Router.extend({
   routes: {
-    "shooter/:id": function(id){
-      //var model = ShooterCollection.getSingletonInstance.get(id);
-      //var ioView = SingletonIoView();
-      //ioView.model.clear({silent: true});
-      //ioView.model.set(model.attributes);
-      events.trigger("show:shooter", id);
+    "shooter/new": function(){
+      events.trigger('edit:shooter', 'new');
     },
-    "new": function(){
-      alert("new");
+    "shooter/edit/:id": function(id){
+      events.trigger('edit:shooter', id);
+    },
+    "shooter/:id": function(id){
+      events.trigger("show:shooter", id);
     }
   }
 });

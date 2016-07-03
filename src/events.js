@@ -22,6 +22,10 @@ var SingletonEvent = function() {
 
       events.on('show:shooter', function(id){
         console.log("Event Triggered: show:shooter id:" + id);
+      });
+
+      events.on('edit:shooter', function(id){
+        console.log("Event Triggered: edit:shooter " + id);
       })
 
 _instance = events;

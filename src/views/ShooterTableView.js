@@ -1,8 +1,11 @@
-var $                   = require('jquery'),
-    _                   = require('underscore')
-    Backbone            = require('backbone'),
-    template            = require("../templates/ShooterTable.hbs"),
-    ShooterItemView   = require("./ShooterTableItemView");
+var $                   = require('jquery');
+var _                   = require('underscore');
+var Backbone            = require('backbone');
+var template            = require("../templates/ShooterTable.hbs");
+var ShooterItemView     = require("./ShooterTableItemView");
+var events              = require('../events');
+var Router              = require('../router');
+
 Backbone.$ = $;
 
 
@@ -32,6 +35,7 @@ module.exports = Backbone.View.extend({
   },
 
   addSchooterClicked: function(event){
-    alert('new');
+
+    Router.navigate("shooter/new", {trigger: true});
   }
 });
