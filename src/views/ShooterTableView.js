@@ -17,7 +17,7 @@ module.exports = Backbone.View.extend({
   },
   addOneItem: function(model){
     var view = new ShooterItemView({model: model});
-    this.$el.append(view.render().el);
+    this.$el.find('.shooter-items').append(view.render().el);
   },
 
   render: function () {
@@ -32,6 +32,6 @@ module.exports = Backbone.View.extend({
   },
 
   addSchooterClicked: function(event){
-    aler('new');
+    alert('new');
   }
 });
