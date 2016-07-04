@@ -43,13 +43,13 @@ events.on('edit:shooter', function(id){
   if(id === 'new'){
     editView = new ShooterEditView({
       model: new ShooterModel(),
-      el: '#shooter-io'
+      el: '#shooter-edit'
     });
   }
   else{
     editView = new ShooterEditView({
       model: sCollection.get(id),
-      el: '#shooter-io'
+      el: '#shooter-edit'
     });
   }
 });
