@@ -7,7 +7,9 @@ Backbone.$ = $;
 module.exports = Backbone.View.extend({
 
   render: function(){
-    this.$el.html(template(this.model.attributes));
+    var attributes = this.model.attributes;
+    attributes.isNew = this.model.isNew();
+    this.$el.html(template(attributes));
   },
 
   initialize: function(){

@@ -55,7 +55,9 @@
                 <div class="pull-right">
 
                     <button type="submit" id="save-button" class="btn btn-success"><span class="glyphicon glyphicon glyphicon-ok"></span></button>
-                    <button type="submit" id="delete-button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                    {{#unless isNew}}
+                      <button type="submit" id="delete-button" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></button>
+                    {{/unless}}
                     <button type="submit" id="cancel-button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></button>
 
                 </div>
