@@ -50,13 +50,18 @@ events.on('edit:shooter', function(id){
     editView.model.clear();
   }
   else{
-      var model = sCollection.get(id);
-      editView.model.set(model.attributes);
+    var model = sCollection.get(id);
+    editView.model.set(model.attributes);
   }
 });
 
 events.on('navigate:back', function(){
   Router.navigate("shooter/"+lastModelIdBeforeEdit, {trigger: true});
+});
+
+events.on('delete:shooter', function(id){
+  sCollection.get(id).destroy('{wait: true}');
+  events.trigger('show:shooter', sCollection.at(0).id);
 });
 
 

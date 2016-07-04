@@ -32,6 +32,10 @@ var SingletonEvent = function() {
         console.log("Event Triggered: navigate:back");
       });
 
+      events.on('delete:shooter', function(){
+        console.log("Event Triggered: delete:shooter");
+      });
+
 _instance = events;
 
 

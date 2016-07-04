@@ -22,6 +22,10 @@ module.exports = Backbone.View.extend({
     'click #cancel-button': function(event){
       event.preventDefault();
       events.trigger("navigate:back");
+    },
+    'click #delete-button': function(event){
+      event.preventDefault();
+      events.trigger('delete:shooter', this.model.id);
     }
   },
 
