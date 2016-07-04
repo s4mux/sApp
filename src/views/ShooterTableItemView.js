@@ -15,6 +15,7 @@ module.exports = Backbone.View.extend({
   },
   events: {
     'click': function(event){
+      event.preventDefault();
       Router.navigate("shooter/" + this.model.attributes.id, {trigger: true});
     }
   }
