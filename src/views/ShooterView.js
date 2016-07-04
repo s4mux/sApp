@@ -18,7 +18,7 @@ module.exports = Backbone.View.extend({
   },
 
   events: {
-    'click .cancel-button': function(event){
+    'click #cancel-button': function(event){
       Router.navigate("shooter/edit/" + this.model.attributes.id, {trigger: true});
     }
 
