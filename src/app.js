@@ -6,7 +6,8 @@ var ShooterEditView     = require("./views/ShooterEditView");
 var ShooterCollection = require("./models/ShooterCollection");
 var ShooterModel = require("./models/ShooterModel")
 var Router = require("./router");
-var events = require('./events')
+var events = require('./events');
+var _ = require("underscore");
 Backbone.$ = $;
 
 var HandlebarsR = require("hbsfy/runtime");
@@ -31,26 +32,26 @@ var editView;
 
 var lastModelIdBeforeEdit=0;
 events.on('show:shooter', function(id){
+
   var model = sCollection.get(id);
 
   ioView.model.clear({silent: true});
   ioView.model.set(model.attributes);
+  editView.$el.addClass('hidden');
+  ioView.$el.removeClass('hidden');
 
 });
 
 events.on('edit:shooter', function(id){
   lastModelIdBeforeEdit = ioView.model.attributes.id;
+  editView.$el.removeClass('hidden');
+  ioView.$el.addClass('hidden');
   if(id === 'new'){
-    editView = new ShooterEditView({
-      model: new ShooterModel(),
-      el: '#shooter-edit'
-    });
+    editView.model.clear();
   }
   else{
-    editView = new ShooterEditView({
-      model: sCollection.get(id),
-      el: '#shooter-edit'
-    });
+      var model = sCollection.get(id);
+      editView.model.set(model.attributes);
   }
 });
 
@@ -75,6 +76,15 @@ $(function(){
     model: new ShooterModel(),
     el: "#shooter-io"
   });
+
+  editView = new ShooterEditView({
+    model: new ShooterModel(),
+    el: '#shooter-edit'
+  });
+
+
+  ioView.$el.addClass('hidden');
+  editView.$el.addClass('hidden');
 
   Backbone.history.start(/*{pushState: true}*/);
   //Router.navigate("shooter/1", {trigger: true});
