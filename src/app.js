@@ -28,6 +28,8 @@ var sCollection;
 var sTableView;
 var editView;
 
+
+var lastModelIdBeforeEdit=0;
 events.on('show:shooter', function(id){
   var model = sCollection.get(id);
 
@@ -37,6 +39,7 @@ events.on('show:shooter', function(id){
 });
 
 events.on('edit:shooter', function(id){
+  lastModelIdBeforeEdit = ioView.model.attributes.id;
   if(id === 'new'){
     editView = new ShooterEditView({
       model: new ShooterModel(),
@@ -49,6 +52,10 @@ events.on('edit:shooter', function(id){
       el: '#shooter-io'
     });
   }
+});
+
+events.on('navigate:back', function(){
+  Router.navigate("shooter/"+lastModelIdBeforeEdit, {trigger: true});
 });
 
 

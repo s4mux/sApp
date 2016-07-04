@@ -1,7 +1,7 @@
 var $                   = require('jquery'),
     Backbone            = require('backbone'),
     template            = require("../templates/ShooterEdit.hbs");
-
+var events              = require("../events");
 Backbone.$ = $;
 
 module.exports = Backbone.View.extend({
@@ -18,7 +18,11 @@ module.exports = Backbone.View.extend({
   },
 
   events: {
-    "click .shooterGender": "gender"
+    'click .shooterGender': "gender",
+    'click #cancel-button': function(event){
+      event.preventDefault();
+      events.trigger("navigate:back");
+    }
   },
 
   gender: function(e){

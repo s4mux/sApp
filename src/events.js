@@ -26,7 +26,11 @@ var SingletonEvent = function() {
 
       events.on('edit:shooter', function(id){
         console.log("Event Triggered: edit:shooter " + id);
-      })
+      });
+
+      events.on('navigate:back', function(){
+        console.log("Event Triggered: navigate:back");
+      });
 
 _instance = events;
 
