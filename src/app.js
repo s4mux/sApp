@@ -30,7 +30,7 @@ var sTableView;
 var editView;
 
 
-var lastModelIdBeforeEdit=0;
+var lastModelIdBeforeEdit=undefined;
 events.on('show:shooter', function(id){
 
   var model = sCollection.get(id);
@@ -56,6 +56,9 @@ events.on('edit:shooter', function(id){
 });
 
 events.on('navigate:back', function(){
+  if(undefined === lastModelIdBeforeEdit){
+    lastModelIdBeforeEdit = sCollection.at(0).id;
+  }
   Router.navigate("shooter/"+lastModelIdBeforeEdit, {trigger: true});
 });
 
