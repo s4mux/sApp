@@ -8,6 +8,7 @@ var ShooterModel = require("./models/ShooterModel")
 var Router = require("./router");
 var events = require('./events');
 var _ = require("underscore");
+var ResultsEditView = require("./views/ResultsEditView");
 Backbone.$ = $;
 
 var HandlebarsR = require("hbsfy/runtime");
@@ -28,6 +29,7 @@ var ioView;
 var sCollection;
 var sTableView;
 var editView;
+var rEditView;
 
 
 var lastModelIdBeforeEdit=undefined;
@@ -75,13 +77,16 @@ $(function(){
 
  }});
 
+
+ var modelInScope = new ShooterModel();
+
  sTableView = new ShooterTableView({
    collection: sCollection,
    el: "#shooters-tabe"
  });
 
   ioView = new ShooterView({
-    model: new ShooterModel(),
+    model: modelInScope,
     el: "#shooter-io"
   });
 
@@ -90,6 +95,10 @@ $(function(){
     el: '#shooter-edit'
   });
 
+  rEditView = new ResultsEditView({
+    model: modelInScope,
+    el: '#result-edit'
+  });
 
   ioView.$el.addClass('hidden');
   editView.$el.addClass('hidden');
