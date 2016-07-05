@@ -1,3 +1,16 @@
 <div>
-  <h1> Hello Result </h1>
+
+    {{#each config}}
+        <form class="form-inline">
+            <div class="form-group">
+                <label>{{name}} </label>
+                {{#each shots}}
+                <input type="number" min="0" max="10" class="form-control" placeholder="10" id="{{this}}">
+                {{/each}}
+
+                <label id="{{resultId}}"></label>
+            </div>
+        </form>
+    {{/each}}
+
 </div>
