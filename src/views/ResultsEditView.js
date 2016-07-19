@@ -7,14 +7,8 @@ var _ = require('underscore');
 
 Backbone.$ = $;
 
+var resultKey = 'aergeraDemo'
 
-var attributes = {};
-attributes.result = [
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 11, 13],
-    [9, 9, 9, 9, 9, 9, 9, 9],
-    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
-];
 
 
 function make10(shotArray, key) {
@@ -46,9 +40,11 @@ function sumAll(results){ //Todo: use reduce or something!!
 module.exports = Backbone.View.extend({
     render: function() {
         this.$el.html("");
+        if(undefined === this.model.attributes.championships) return;
+        if(undefined === this.model.attributes.championships[resultKey]) return;
         for (var i = 0; i < 4; i++) {
-            var temp = make10(attributes.result[i], "shot" + (i + 1) + "-");
-            var total = sum10(attributes.result[i]);
+            var temp = make10(this.model.attributes.championships[resultKey].results[i], "shot" + (i + 1) + "-");
+            var total = sum10(this.model.attributes.championships[resultKey].results[i]);
             this.$el.append(template({
                 "name": "Passe " + (i + 1),
                 "result": temp,
@@ -56,7 +52,7 @@ module.exports = Backbone.View.extend({
                 "sumId": "sumId" + (i + 1)
             }));
         }
-        this.$bigTotal = $('<span>'+sumAll(attributes.result)+'</span>');
+        this.$bigTotal = $('<span>'+sumAll(this.model.attributes.championships[resultKey].results)+'</span>');
         this.$el.append(this.$bigTotal);
     },
 
@@ -73,7 +69,7 @@ module.exports = Backbone.View.extend({
     renderSum: function(col) {
 
         var el = this.$el.find("#sumId" + (col + 1));
-        el.html(sum10(attributes.result[col]));
+        el.html(sum10(this.model.attributes.championships[resultKey].results[col]));
     },
 
     update: function(event) {
@@ -82,9 +78,9 @@ module.exports = Backbone.View.extend({
         var a = _.map(id.substring(4, id.length).split('-'), function(element) {
             return Number(element) - 1;
         });
-        attributes.result[a[0]][a[1]] = event.currentTarget.valueAsNumber;
+        this.model.attributes.championships[resultKey].results[a[0]][a[1]] = event.currentTarget.valueAsNumber;
         this.renderSum(a[0]);
-        this.$bigTotal.html('<span>'+sumAll(attributes.result)+'</span>');
+        this.$bigTotal.html('<span>'+sumAll(this.model.attributes.championships[resultKey].results)+'</span>');
     }
 
 });
