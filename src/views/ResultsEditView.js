@@ -3,36 +3,88 @@ var Backbone = require('backbone');
 var template = require("../templates/ResultsEdit.hbs");
 var events = require('../events');
 var Router = require('../router');
+var _ = require('underscore');
 
 Backbone.$ = $;
 
+
+var attributes = {};
+attributes.result = [
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 11, 13],
+    [9, 9, 9, 9, 9, 9, 9, 9],
+    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
+];
+
+
+function make10(shotArray, key) {
+    var ret = {};
+    for (var i = 0; i < 10; i++) {
+        ret[key + (i + 1)] = shotArray[i];
+    }
+    return ret;
+}
+
+function sum10(shotArray) {
+    var ret = 0;
+    for (var i = 0; i < 10; i++) {
+        ret += shotArray[i] | 0;
+    }
+    return ret;
+}
+
+function sumAll(results){ //Todo: use reduce or something!!
+  var sum = 0;
+  for(var i=0; i<4; i++){
+    for(var j=0; j<10; j++){
+      sum+=results[i][j] | 0;
+    }
+  }
+  return sum;
+}
+
 module.exports = Backbone.View.extend({
     render: function() {
-        var attributes = {};
-        attributes.config = {};
-        attributes.config = [{
-            name: '1. Passe',
-            shots: ["shot-1-1", "shot-1-2", "shot-1-3", "shot-1-4", "shot-1-5", "shot-1-6", "shot-1-7", "shot-1-8", "shot-1-9", "shot-1-10"],
-            resultId: 'label-passe-1'
-        }, {
-            name: '2. Passe',
-            shots: ["shot-2-1", "shot-2-2", "shot-2-3", "shot-2-4", "shot-2-5", "shot-2-6", "shot-2-7", "shot-2-8", "shot-2-9", "shot-2-10"],
-            resultId: 'label-passe-2'
-        }, {
-            name: '3. Passe',
-            shots: ["shot-3-1", "shot-3-2", "shot-3-3", "shot-3-4", "shot-3-5", "shot-3-6", "shot-3-7", "shot-3-8", "shot-3-9", "shot-3-10"],
-            resultId: 'label-passe-3'
-        }, {
-            name: '4. Passe',
-            shots: ["shot-4-1", "shot-4-2", "shot-4-3", "shot-4-4", "shot-4-5", "shot-4-6", "shot-4-7", "shot-4-8", "shot-4-9", "shot-4-10"],
-            resultId: 'label-passe-4'
-        }];
-
-        this.$el.html(template(attributes));
+        this.$el.html("");
+        for (var i = 0; i < 4; i++) {
+            var temp = make10(attributes.result[i], "shot" + (i + 1) + "-");
+            var total = sum10(attributes.result[i]);
+            this.$el.append(template({
+                "name": "Passe " + (i + 1),
+                "result": temp,
+                "total": total,
+                "sumId": "sumId" + (i + 1)
+            }));
+        }
+        this.$bigTotal = $('<span>'+sumAll(attributes.result)+'</span>');
+        this.$el.append(this.$bigTotal);
     },
+
     initialize: function() {
         this.model.on("change", this.render, this);
         this.render();
+    },
+
+    events: {
+        'keyup .shots': 'update',
+        'input .shots': 'update',
+    },
+
+    renderSum: function(col) {
+
+        var el = this.$el.find("#sumId" + (col + 1));
+        el.html(sum10(attributes.result[col]));
+    },
+
+    update: function(event) {
+        var id = event.currentTarget.id;
+        console.log(event.currentTarget.id + " has value:" + event.currentTarget.valueAsNumber);
+        var a = _.map(id.substring(4, id.length).split('-'), function(element) {
+            return Number(element) - 1;
+        });
+        attributes.result[a[0]][a[1]] = event.currentTarget.valueAsNumber;
+        this.renderSum(a[0]);
+        this.$bigTotal.html('<span>'+sumAll(attributes.result)+'</span>');
     }
 
 });
