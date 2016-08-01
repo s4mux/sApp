@@ -8,19 +8,22 @@ var Router              = require('../router');
 
 Backbone.$ = $;
 
+var views = {};
+var that;
 
 module.exports = Backbone.View.extend({
   //className: "list-group",
   initialize: function () {
     this.collection.on("change reset add remove", this.render, this);
+    events.on('show:shooter', this.highlight);
+    that = this;
   },
   events: {
-    "click a" : "highlight",
     "click #addShooterButton" : "addSchooterClicked"
   },
   addOneItem: function(model){
-    var view = new ShooterItemView({model: model});
-    this.$el.find('.shooter-items').append(view.render().el);
+    views[model.id] = new ShooterItemView({model: model});
+    this.$el.find('.shooter-items').append(views[model.id].render().el);
   },
 
   render: function () {
@@ -29,9 +32,9 @@ module.exports = Backbone.View.extend({
     return this;
   },
 
-  highlight: function(event){
-      this.$el.find("a").removeClass("active");
-      $(event.currentTarget).addClass("active");
+  highlight: function(id){
+      that.$el.find("a").removeClass("active");
+      views[id].$el.addClass("active");
   },
 
   addSchooterClicked: function(event){
