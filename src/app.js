@@ -75,7 +75,7 @@ events.on('delete:shooter', function(id){
 $(function(){
   sCollection = new ShooterCollection();
   sCollection.fetch({success: function(collection, response, options){
-   /*sApp.Router.navigate("shooter/" + collection.at(0).attributes.id, {trigger: true});*/
+   Router.navigate("shooter/" + collection.at(0).attributes.id, {trigger: true});
 
  }});
 
@@ -107,5 +107,4 @@ $(function(){
   rEditView.$el.addClass('hidden');
 
   Backbone.history.start(/*{pushState: true}*/);
-  //Router.navigate("shooter/1", {trigger: true});
 });
