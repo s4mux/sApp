@@ -26,6 +26,21 @@ module.exports = Backbone.View.extend({
     'click #delete-button': function(event){
       event.preventDefault();
       events.trigger('delete:shooter', this.model.id);
+    },
+    'click #save-button': function(event){
+      event.preventDefault();
+      var attributes = {};
+      attributes.firstname = this.$el.find('#inputFirstName')[0].value;
+      attributes.name = this.$el.find('#inputName')[0].value;
+      attributes.club = this.$el.find('#inputClub')[0].value;
+      attributes.year = this.$el.find('#inputYear')[0].valueAsNumber;
+    //TODO gender  attributes.club = this.$el.find('inputClub');
+      if(this.model.isNew()){
+        events.trigger('save:shooter', 'new', attributes);
+      }
+      else{
+        events.trigger('save:shooter', this.model.id, attributes);
+      }
     }
   },
 
