@@ -1,107 +1,227 @@
 {
-    "shooters": [{
-        "id": 1,
-        "club": "Super Schützen",
-        "firstname": "Raphael",
-        "name": "Remy",
-        "year": 1991,
-        "gender": "Male",
-        "championships": {
-            "aergeraDemo": {
-                "results": [
-                    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9],
-                    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 11, 13],
-                    [9, 9, 9, 9, 9, 9, 9, 9],
-                    [9, 9, 9, 9, 9, 9, 9, 9, 9, 9]
-                ]
-            }
+  "shooters": [
+    {
+      "id": 1,
+      "club": "Super Schützen",
+      "firstname": "Raphael",
+      "name": "Remy",
+      "year": 1991,
+      "gender": "Male",
+      "championships": {
+        "aergeraDemo": {
+          "results": [
+            [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              11,
+              13
+            ],
+            [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ],
+            [
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9,
+              9
+            ]
+          ]
         }
-    }, {
-        "id": 2,
-        "club": "Super Schützen",
-        "firstname": "Beat",
-        "name": "Waeber",
-        "year": 1978,
-        "gender": "Male",
-        "group": "D7",
-        "championships": {
-            "aergeraDemo": {
-                "results": [
-                    [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-                    [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-                    [10, 10, 10, 10, 10, 10, 10, 10, 10, 10],
-                    [10, 10, 10, 10, 10, 10, 10, 10, 10, 10]
-                ]
-            }
+      }
+    },
+    {
+      "id": 2,
+      "club": "Super Schützen",
+      "firstname": "Beat",
+      "name": "Waeber",
+      "year": 1978,
+      "gender": "Male",
+      "group": "D7",
+      "championships": {
+        "aergeraDemo": {
+          "results": [
+            [
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            [
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            [
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10
+            ],
+            [
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10,
+              10
+            ]
+          ]
         }
-    }, {
-        "id": 3,
-        "firstname": "Aline",
-        "name": "Remy",
-        "club": "Girls",
-        "gender": "Female"
-    }, {
-        "id": 4,
-        "firstname": "Dario",
-        "name": "Gugler",
-        "club": "Musiker"
-    }, {
-        "id": 5,
-        "club": "Super Schützen",
-        "firstname": "Tamari",
-        "name": "Waeber"
-    }, {
-        "id": 6,
-        "club": "Girls",
-        "firstname": "Nathalie",
-        "name": "Waeber"
-    }, {
-        "id": 7,
-        "firstname": "Thomas",
-        "name": "Kolly",
-        "club": "Fischer"
-    }, {
-        "id": 8,
-        "firstname": "David",
-        "name": "Kolly",
-        "club": "Fischer"
-    }, {
-        "id": 9,
-        "club": "Musiker",
-        "firstname": "Angus",
-        "name": "Young"
-    }, {
-        "id": 10,
-        "club": "Rocker",
-        "name": "Slash"
-    }, {
-        "id": 11,
-        "firstname": "Tom",
-        "name": "Cruise",
-        "club": "Star"
-    }, {
-        "id": 12,
-        "firstname": "Brad",
-        "name": "Pitt",
-        "club": "Star"
-    }, {
-        "id": 13,
-        "club": "Musiker",
-        "firstname": "Angus",
-        "name": "Young"
-    }, {
-        "id": 14,
-        "club": "Rocker",
-        "name": "Slash"
-    }, {
-        "id": 15,
-        "firstname": "Tom",
-        "name": "Cruise",
-        "club": "Star"
-    }, {
-        "id": 16,
-        "firstname": "Brad",
-        "name": "Pitt",
-        "club": "Star"
-    }]
+      }
+    },
+    {
+      "id": 3,
+      "firstname": "Aline",
+      "name": "Remy",
+      "club": "Girls",
+      "gender": "Female",
+      "year": 1998
+    },
+    {
+      "id": 4,
+      "firstname": "Dario",
+      "name": "Gugler",
+      "club": "Musiker"
+    },
+    {
+      "id": 5,
+      "club": "Super Schützen",
+      "firstname": "Tamari",
+      "name": "Waeber"
+    },
+    {
+      "id": 6,
+      "club": "Girls",
+      "firstname": "Nathalie",
+      "name": "Waeber"
+    },
+    {
+      "id": 7,
+      "firstname": "Thomas",
+      "name": "Kolly",
+      "club": "Fischer"
+    },
+    {
+      "id": 8,
+      "firstname": "David",
+      "name": "Kolly",
+      "club": "Fischer"
+    },
+    {
+      "id": 9,
+      "club": "Musiker",
+      "firstname": "Angus",
+      "name": "Young"
+    },
+    {
+      "id": 10,
+      "club": "Rocker",
+      "name": "Slash"
+    },
+    {
+      "id": 11,
+      "firstname": "Tom",
+      "name": "Cruise",
+      "club": "Star"
+    },
+    {
+      "id": 12,
+      "firstname": "Brad",
+      "name": "Pitt",
+      "club": "Star"
+    },
+    {
+      "id": 13,
+      "club": "Musiker",
+      "firstname": "Angus",
+      "name": "Young"
+    },
+    {
+      "id": 14,
+      "club": "Rocker",
+      "name": "Slash"
+    },
+    {
+      "id": 15,
+      "firstname": "Tom",
+      "name": "Cruise",
+      "club": "Star"
+    },
+    {
+      "id": 16,
+      "firstname": "Brad",
+      "name": "Pitt",
+      "club": "Star"
+    },
+    {
+      "firstname": "Samuel",
+      "name": "Remy",
+      "club": "Admin",
+      "year": 1736,
+      "id": 17
+    },
+    {
+      "firstname": "Sandro",
+      "name": "Buntschu",
+      "club": "Biker",
+      "year": 1997,
+      "id": 18
+    }
+  ]
 }
