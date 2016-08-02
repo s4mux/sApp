@@ -48,8 +48,13 @@ module.exports = Backbone.View.extend({
 
   filter: function(event){
     event.preventDefault();
-    console.log(event.target.value);
-    this.updateList(event.target.value);
+    if (event.keyCode == 27) { // escape key maps to keycode `27`
+        this.updateList("");
+        event.target.value = "";
+    }
+    else{
+      this.updateList(event.target.value);
+    }
 
   },
 
