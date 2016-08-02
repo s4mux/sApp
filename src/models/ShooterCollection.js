@@ -3,5 +3,6 @@ var ShooterModel = require("./ShooterModel");
 
 module.exports = Backbone.Collection.extend({
     model: ShooterModel,
-    url: '/shooters'
+    url: '/shooters',
+    comparator: 'firstname'
 });
