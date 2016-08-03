@@ -4,7 +4,26 @@
         <input id="tableSearchField" value="{{search}}" type="text" class="form-control" placeholder="Suche.." aria-describedby="sizing-addon1">
     </div>
 </div>
+
+
 <div class="shooter-items" style="height:75vh; overflow: scroll;"> </div>
+
+
+
 <div class="list-group-item">
     <button type="submit" id="addShooterButton" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+
+    <div class="btn-group dropup">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span class="glyphicon glyphicon-sort-by-alphabet"> </span> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#" class="samSort" id="samSortName">Name</a></li>
+    <li><a href="#" class="samSort" id="samSortFirstName">Vorname</a></li>
+    <li><a href="#" class="samSort" id="samSortClub">Verein</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#" class="samSort" id="samSortGroup">Gruppe</a></li>
+  </ul>
+</div>
+
 </div>

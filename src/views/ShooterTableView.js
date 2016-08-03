@@ -21,7 +21,8 @@ module.exports = Backbone.View.extend({
   },
   events: {
     "click #addShooterButton" : "addSchooterClicked",
-    "keyup #tableSearchField" : "filter"
+    "keyup #tableSearchField" : "filter",
+    "click .samSort" :"sort"
   },
   addOneItem: function(model){
     views[model.id] = new ShooterItemView({model: model});
@@ -34,8 +35,26 @@ module.exports = Backbone.View.extend({
     return this;
   },
 
+  sort: function(event){
+    event.preventDefault();
+    console.log(event.target.id);
+    if("samSortName" == event.target.id){
+      this.collection.setComparator("name");
+    }
+    else if("samSortFirstName" == event.target.id){
+      this.collection.setComparator("firstname");
+    }
+    else if("samSortClub" == event.target.id){
+      this.collection.setComparator("club");
+    }
+    else if("samSortGroup" == event.target.id){
+      this.collection.setComparator("group");
+    }
+    this.updateList();
+  },
+
   updateList: function(filter){
-    textFilter = filter;
+    textFilter = filter || textFilter;
     _.forEach(views, function(view){view.remove()});
     _.forEach(this.collection.find(textFilter), this.addOneItem, this);
   },

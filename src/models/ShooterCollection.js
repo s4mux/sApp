@@ -21,5 +21,25 @@ module.exports = Backbone.Collection.extend({
         }
         return false;
       });
+    },
+
+    setComparator: function(str){
+      if(str == "name"){
+        this.comparator = "name"
+      }
+      else if(str == "firstname"){
+        this.comparator = "firstname"
+      }
+      else if(str == "club"){
+        this.comparator = "club"
+      }
+      /*else if(str == "group"){
+        this.comparator = "group"
+      }*/// TODO group
+      else{
+        console.log("ShooterCollection:setComparator undefined field!");
+      }
+      this.sort();
+
     }
 });
