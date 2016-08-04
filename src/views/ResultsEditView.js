@@ -1,6 +1,7 @@
 var $ = require('jquery');
 var Backbone = require('backbone');
 var template = require("../templates/ResultsEdit.hbs");
+var itemTemplate = require("../templates/ResultsEditItem.hbs");
 var events = require('../events');
 var Router = require('../router');
 var _ = require('underscore');
@@ -39,13 +40,13 @@ function sumAll(results){ //Todo: use reduce or something!!
 
 module.exports = Backbone.View.extend({
     render: function() {
-        this.$el.html("");
+        this.$el.html(template({isNew: this.model.isNew()}));
         if(undefined === this.model.attributes.championships) return;
         if(undefined === this.model.attributes.championships[resultKey]) return;
         for (var i = 0; i < 4; i++) {
             var temp = make10(this.model.attributes.championships[resultKey].results[i], "shot" + (i + 1) + "-");
             var total = sum10(this.model.attributes.championships[resultKey].results[i]);
-            this.$el.append(template({
+            this.$el.find("#resultDiv").append(itemTemplate({
                 "name": "Passe " + (i + 1),
                 "result": temp,
                 "total": total,
@@ -53,7 +54,9 @@ module.exports = Backbone.View.extend({
             }));
         }
         this.$bigTotal = $('<span>'+sumAll(this.model.attributes.championships[resultKey].results)+'</span>');
-        this.$el.append(this.$bigTotal);
+        this.$el.find("#bigTotalDiv").append(this.$bigTotal);
+
+
     },
 
     initialize: function() {

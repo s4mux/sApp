@@ -1,0 +1,11 @@
+<div>
+    <form class="form-inline">
+        <div class="form-group">
+            <label>{{name}}</label>
+            {{#each result}}
+                <input type="number" min="0" max="10" class="form-control shots" placeholder="10" value="{{this}}" id="{{@key}}">
+            {{/each}}
+            <label id="{{sumId}}">{{total}}</label>
+        </div>
+    </form>
+</div>
