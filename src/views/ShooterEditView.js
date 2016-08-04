@@ -1,6 +1,6 @@
-var $                   = require('jquery'),
-    Backbone            = require('backbone'),
-    template            = require("../templates/ShooterEdit.hbs");
+var $                   = require('jquery');
+var Backbone            = require('backbone');
+var template            = require("../templates/ShooterEdit.hbs");
 var events              = require("../events");
 Backbone.$ = $;
 
