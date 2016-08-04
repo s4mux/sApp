@@ -4,6 +4,7 @@ var ShooterView         = require("./views/ShooterView");
 var ShooterTableView    = require("./views/ShooterTableView");
 var ShooterEditView     = require("./views/ShooterEditView");
 var ShooterCollection = require("./models/ShooterCollection");
+var ResultsView = require("./views/ResultsView");
 var ShooterModel = require("./models/ShooterModel")
 var Router = require("./router");
 var events = require('./events');
@@ -29,6 +30,7 @@ var ioView;
 var sCollection;
 var sTableView;
 var editView;
+var resultView;
 var rEditView;
 
 
@@ -120,6 +122,11 @@ $(function(){
   rEditView = new ResultsEditView({
     model: modelInScope,
     el: '#result-edit'
+  });
+
+  resultView = new ResultsView({
+    model: modelInScope,
+    el: "#result-view"
   });
 
   ioView.$el.addClass('hidden');

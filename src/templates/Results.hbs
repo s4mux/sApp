@@ -1,0 +1,53 @@
+
+<div class="jumbotron">
+
+
+{{#if result}}
+<table class="table table-condensed table-hover">
+  <thead>
+  <tr>
+    <th>Passen</th>
+    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>Total</th>
+  </tr>
+</thead>
+</tbody>
+  <tr>
+    <th>1. Passe</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>55</td>
+  </tr>
+  <tr>
+    <th>2. Passe</th>
+    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>55</td>
+  </tr>
+  <tr>
+    <th>3. Passe</th>
+    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>55</td>
+  </tr>
+  <tr>
+    <th>4. Passe</th>
+    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>55</td>
+  </tr>
+  <tr>
+    <th>Resultat</th>
+    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
+    <td>220</td>
+  </tr>
+</tbody>
+</table>
+
+<div class="row">
+<div class="form-group">
+  <div class="col-md-1 col-md-offset-11">
+
+      <button type="submit" id="editResultButton" class="btn btn-primary"><span class="glyphicon glyphicon-edit"></span></button>
+  </div>
+</div>
+</div>
+
+
+
+{{else}}
+
+  <button type="submit" id="participateButton" class="btn btn-primary"><span class="glyphicon glyphicon-plus"></span></button>
+
+{{/if}}
+</div>
