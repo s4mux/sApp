@@ -6,30 +6,34 @@
 <table class="table table-condensed table-hover">
   <thead>
   <tr>
-    <th>Passen</th>
-    <th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th><th>Total</th>
+    {{#each result.head}}
+    <th>{{this}}</th>
+    {{/each}}
   </tr>
 </thead>
 </tbody>
+  {{#each result.res}}
   <tr>
-    <th>1. Passe</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>55</td>
+    {{#each this}}
+    {{#if @first}}
+  <th>{{this}}</th>
+{{else}}
+<td>{{this}}</td>
+    {{/if}}
+
+
+    {{/each}}
   </tr>
+  {{/each}}
+
   <tr>
-    <th>2. Passe</th>
-    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>55</td>
-  </tr>
-  <tr>
-    <th>3. Passe</th>
-    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>55</td>
-  </tr>
-  <tr>
-    <th>4. Passe</th>
-    <td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>55</td>
-  </tr>
-  <tr>
-    <th>Resultat</th>
-    <td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-    <td>220</td>
+    {{#each result.foot}}
+    {{#if @first}}
+    <th>{{this}}</th>
+    {{else}}
+    <td>{{this}}</td>
+    {{/if}}
+    {{/each}}
   </tr>
 </tbody>
 </table>
