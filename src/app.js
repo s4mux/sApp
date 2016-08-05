@@ -68,6 +68,7 @@ events.on('edit:result', function(){
 events.on('exit:edit', function(){
   rEditView.$el.addClass('hidden');
   resultView.$el.removeClass('hidden');
+  Router.navigate("shooter/" + resultView.model.attributes.id, {trigger: true});
 });
 
 events.on('save:shooter', function(id, attributes){

@@ -71,7 +71,8 @@ module.exports = Backbone.View.extend({
   events: {
     'click #editResultButton': function(event){
       event.preventDefault();
-      events.trigger('edit:result');
+      //events.trigger('edit:result');
+      Router.navigate("shooter/" + this.model.attributes.id +"/editResult", {trigger: true});
     }
   }
 });
