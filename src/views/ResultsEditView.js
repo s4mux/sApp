@@ -8,7 +8,7 @@ var _ = require('underscore');
 
 Backbone.$ = $;
 
-var resultKey = 'aergeraDemo'
+var resultKey = 'aergeraDemo';
 
 
 
@@ -67,6 +67,10 @@ module.exports = Backbone.View.extend({
     events: {
         'keyup .shots': 'update',
         'input .shots': 'update',
+        'click #cancel-button': function(event){
+          event.preventDefault();
+          events.trigger('exit:edit');
+        }
     },
 
     renderSum: function(col) {

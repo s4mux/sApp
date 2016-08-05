@@ -66,5 +66,12 @@ module.exports = Backbone.View.extend({
     config.on("change", this.render, this);
     this.model.on("change", this.render, this);
     this.render();
+  },
+
+  events: {
+    'click #editResultButton': function(event){
+      event.preventDefault();
+      events.trigger('edit:result');
+    }
   }
 });

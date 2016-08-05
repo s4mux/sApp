@@ -43,7 +43,6 @@ events.on('show:shooter', function(id){
   ioView.model.set(model.attributes);
   editView.$el.addClass('hidden');
   ioView.$el.removeClass('hidden');
-  rEditView.$el.removeClass('hidden');
 
 });
 
@@ -51,7 +50,6 @@ events.on('edit:shooter', function(id){
   lastModelIdBeforeEdit = ioView.model.attributes.id;
   editView.$el.removeClass('hidden');
   ioView.$el.addClass('hidden');
-  rEditView.$el.addClass('hidden');
   if(id === 'new'){
     editView.model.clear();
   }
@@ -59,6 +57,17 @@ events.on('edit:shooter', function(id){
     var model = sCollection.get(id);
     editView.model.set(model.attributes);
   }
+});
+
+events.on('edit:result', function(){
+
+  rEditView.$el.removeClass('hidden');
+  resultView.$el.addClass('hidden');
+});
+
+events.on('exit:edit', function(){
+  rEditView.$el.addClass('hidden');
+  resultView.$el.removeClass('hidden');
 });
 
 events.on('save:shooter', function(id, attributes){

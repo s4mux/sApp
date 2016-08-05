@@ -40,7 +40,15 @@ var SingletonEvent = function() {
         console.log("Event triggered: save:shooter " + id + ". Attributes: " + JSON.stringify(attributes));
       });
 
-_instance = events;
+      events.on('edit:result', function(){
+        console.log("Event triggered: edit:result.");
+      });
+
+      events.on('exit:edit', function(){
+        console.log("Event triggered: exit:edit");
+      });
+
+      _instance = events;
 
 
     }
