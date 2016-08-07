@@ -73,6 +73,11 @@ module.exports = Backbone.View.extend({
       event.preventDefault();
       //events.trigger('edit:result');
       Router.navigate("shooter/" + this.model.attributes.id +"/editResult", {trigger: true});
+    },
+
+    'click #participateButton': function(event){
+      event.preventDefault();
+      Router.navigate("shooter/" + this.model.attributes.id +"/newResult", {trigger: true});
     }
   }
 });

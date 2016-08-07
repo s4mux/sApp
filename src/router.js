@@ -21,6 +21,11 @@ var Router = Backbone.Router.extend({
 
     },
 
+    "shooter/:id/newResult" : function(id){
+      events.trigger("show:shooter", id);
+      events.trigger("new:result");
+    },
+
     "shooter/:id": function(id){
       events.trigger("show:shooter", id);
     }

@@ -36,6 +36,10 @@ var SingletonEvent = function() {
         console.log("Event Triggered: delete:shooter");
       });
 
+      events.on('new:result', function(){
+        console.log("Event Triggered: new:result");
+      })
+
       events.on('save:shooter', function(id, attributes){
         console.log("Event triggered: save:shooter " + id + ". Attributes: " + JSON.stringify(attributes));
       });

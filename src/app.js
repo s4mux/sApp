@@ -10,6 +10,7 @@ var Router = require("./router");
 var events = require('./events');
 var _ = require("underscore");
 var ResultsEditView = require("./views/ResultsEditView");
+var config = require("./models/configModelInstance")
 Backbone.$ = $;
 
 var HandlebarsR = require("hbsfy/runtime");
@@ -57,6 +58,17 @@ events.on('edit:shooter', function(id){
     var model = sCollection.get(id);
     editView.model.set(model.attributes);
   }
+});
+
+events.on("new:result", function(){
+  var champ = [];
+  rEditView.$el.removeClass('hidden');
+  resultView.$el.addClass('hidden');
+  if(resultView.model.has("championships")){
+    champ = resultView.model.get("championships");
+  }
+  champ[config.attributes.championship] = {results: [new Array(10), new Array(10), new Array(10), new Array(10)]};
+  resultView.model.set({"championships" : champ});
 });
 
 events.on('edit:result', function(){
