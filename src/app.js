@@ -45,6 +45,10 @@ events.on('show:shooter', function(id){
   editView.$el.addClass('hidden');
   ioView.$el.removeClass('hidden');
 
+  //Make sure EditResult is hiddden
+  rEditView.$el.addClass('hidden');
+  resultView.$el.removeClass('hidden');
+
 });
 
 events.on('edit:shooter', function(id){
@@ -61,7 +65,7 @@ events.on('edit:shooter', function(id){
 });
 
 events.on("new:result", function(){
-  
+
   rEditView.$el.removeClass('hidden');
   resultView.$el.addClass('hidden');
 
