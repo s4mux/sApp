@@ -5,10 +5,8 @@ var itemTemplate = require("../templates/ResultsEditItem.hbs");
 var events = require('../events');
 var Router = require('../router');
 var _ = require('underscore');
-
+var config = require('../models/ConfigModelInstance');
 Backbone.$ = $;
-
-var resultKey = 'aergeraDemo';
 
 
 
@@ -40,12 +38,23 @@ function sumAll(results){ //Todo: use reduce or something!!
 
 module.exports = Backbone.View.extend({
     render: function() {
-        this.$el.html(template({isNew: this.model.isNew()}));
-        if(undefined === this.model.attributes.championships) return;
-        if(undefined === this.model.attributes.championships[resultKey]) return;
+        var champ = [];
+        var resultKey = config.attributes.championship;
+        var isNew = false;
+        if(this.model.has("championships")){
+          champ = this.model.get("championships");
+        }
+        if(!champ[resultKey]){
+          champ[resultKey] = {results: [new Array(10), new Array(10), new Array(10), new Array(10)]};
+          isNew = true;
+        }
+
+        this.$el.html(template({isNew: isNew}));
+
+
         for (var i = 0; i < 4; i++) {
-            var temp = make10(this.model.attributes.championships[resultKey].results[i], "shot" + (i + 1) + "-");
-            var total = sum10(this.model.attributes.championships[resultKey].results[i]);
+            var temp = make10(champ[resultKey].results[i], "shot" + (i + 1) + "-");
+            var total = sum10(champ[resultKey].results[i]);
             this.$el.find("#resultDiv").append(itemTemplate({
                 "name": "Passe " + (i + 1),
                 "result": temp,
@@ -53,7 +62,7 @@ module.exports = Backbone.View.extend({
                 "sumId": "sumId" + (i + 1)
             }));
         }
-        this.$bigTotal = $('<span>'+sumAll(this.model.attributes.championships[resultKey].results)+'</span>');
+        this.$bigTotal = $('<span>'+sumAll(champ[resultKey].results)+'</span>');
         this.$el.find("#bigTotalDiv").append(this.$bigTotal);
 
 

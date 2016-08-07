@@ -61,14 +61,10 @@ events.on('edit:shooter', function(id){
 });
 
 events.on("new:result", function(){
-  var champ = [];
+  
   rEditView.$el.removeClass('hidden');
   resultView.$el.addClass('hidden');
-  if(resultView.model.has("championships")){
-    champ = resultView.model.get("championships");
-  }
-  champ[config.attributes.championship] = {results: [new Array(10), new Array(10), new Array(10), new Array(10)]};
-  resultView.model.set({"championships" : champ});
+
 });
 
 events.on('edit:result', function(){
