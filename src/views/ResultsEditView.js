@@ -8,7 +8,7 @@ var _ = require('underscore');
 var config = require('../models/ConfigModelInstance');
 Backbone.$ = $;
 
-
+var champ;
 
 function make10(shotArray, key) {
     var ret = {};
@@ -38,7 +38,7 @@ function sumAll(results){ //Todo: use reduce or something!!
 
 module.exports = Backbone.View.extend({
     render: function() {
-        var champ = [];
+        champ = [];
         var resultKey = config.attributes.championship;
         var isNew = false;
         if(this.model.has("championships")){
@@ -85,7 +85,7 @@ module.exports = Backbone.View.extend({
     renderSum: function(col) {
 
         var el = this.$el.find("#sumId" + (col + 1));
-        el.html(sum10(this.model.attributes.championships[resultKey].results[col]));
+        el.html(sum10(champ[config.attributes.championship].results[col]));
     },
 
     update: function(event) {
@@ -94,9 +94,9 @@ module.exports = Backbone.View.extend({
         var a = _.map(id.substring(4, id.length).split('-'), function(element) {
             return Number(element) - 1;
         });
-        this.model.attributes.championships[resultKey].results[a[0]][a[1]] = event.currentTarget.valueAsNumber;
+        champ[config.attributes.championship].results[a[0]][a[1]] = event.currentTarget.valueAsNumber;
         this.renderSum(a[0]);
-        this.$bigTotal.html('<span>'+sumAll(this.model.attributes.championships[resultKey].results)+'</span>');
+        this.$bigTotal.html('<span>'+sumAll(champ[config.attributes.championship].results)+'</span>');
     }
 
 });
